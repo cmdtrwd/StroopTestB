@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face-Word Stroop Test</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <nav id="top-nav">
+           <h1>Face-Word Stroop Test</h1>
+        </nav>
+        <section id="content-container">
+            <section id="info" class="box">
+                <h1>กรุณากรอกข้อมูลส่วนตัว</h1>
+                <form>
+                    <div class="row">
+                        <label for="name">ชื่อ</label>
+                        <input type="text" id="name" name="name" placeholder="ชื่อของท่าน" required>
+                    </div>
+                    <div class="row">
+                        <label for="lastname">สกุล</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="นามสกุลของท่าน" required>
+                    </div>
+                    <div class="row">
+                        <label for="id">รหัส</label>
+                        <input type="text" id="id" name="id" placeholder="เช่น 0001.." required>
+                    </div>
+                    <div class="row">
+                        <input type="button" value="ยืนยัน" onclick="LoadTest()">
+                    </div>
+                </form>
+            </section>
+            <section id="test" class="box">
+                <h1 id="word"></h1>
+                <p id="instruction" class="active"></p>
+                <div id="currentImage">
+                </div>
+                <div id="circle"></div>
+                <div id="push-button" class="button" onclick="NotifyPush()">Push</div>
+            </section>            
+        </section>
+        <section id="key-layout">
+            <div data-key="A" id="keyA">
+                <h3>A</h3>
+            </div>
+            <div data-key="L" id="keyL">
+                <h3>L</h3>
+            </div>
+        </section>
+    </header>    
+    <script src="js/main.js"></script>
+</body>
+</html>

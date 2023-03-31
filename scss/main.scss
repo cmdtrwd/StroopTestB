@@ -1,0 +1,241 @@
+@use '_reset';
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai:100,200,300,regular,500,600,700);
+
+// Variables
+$primary-color: #2C3639;
+$secondary-color: #3F4E4F;
+$teritiary-color: #A27B5C;
+$quaterary-color: #DCD7C9;
+
+$gap-base: 16px;
+
+body {
+    font-family: 'Poppins';
+}
+
+
+@mixin flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// Animations
+@keyframes keyPress {
+    to {
+        background-color: $teritiary-color;
+    }
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+
+    #top-nav {
+        height: 64px;
+        @include flex-row-center();
+        background-color: $primary-color;
+        color: $quaterary-color;
+    }
+
+    #content-container {
+        height: calc(100vh - 64px - 130px);
+        // padding: $gap-base*5;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        // @include flex-column-center();        
+        .box {
+            width: 100%;
+            height: 100%;
+            background-color: $quaterary-color;
+            @include flex-column-center();
+            // justify-content: space-between;
+            padding: $gap-base*5 0;
+            box-sizing: border-box;
+            border: 1px solid white;
+            transition: 0.3s all ease-in-out;
+
+            h1 {
+                font-weight: bold;
+                font-size: 3em;
+                color: $primary-color;
+            }
+
+            #instruction {
+                max-width: 1200px;
+                padding: 0 $gap-base*5;
+                line-height: 150%;
+                text-align: center;
+                font-size: 2em;
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+            }
+
+            #currentImage {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                img {
+                    width: auto;
+                    height: 300px;
+                }
+            }
+
+            #circle {
+                display: none;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: $teritiary-color;
+
+                &.active {
+                    animation-name: circle-push;
+                    animation-duration: 0.5s;
+                    animation-timing-function: ease-in-out;
+                    animation-fill-mode: both;
+                    animation-iteration-count: 2;
+                    animation-direction: alternate;
+                }
+            }
+
+            #word {
+                // display: none;
+                position: absolute;
+                top: 120px;
+            }
+
+            #push-button {
+                display: none;
+            }
+
+            .button {
+                width: 100px;
+                padding: $gap-base;
+                border: $primary-color 1px solid;
+                text-align: center;
+                border-radius: calc($gap-base / 2);
+                cursor: pointer;
+                transition: 0.3s all ease-in-out;
+
+                &:hover {
+                    background-color: $primary-color;
+                    color: $quaterary-color;
+                }
+            }
+
+            &.active {
+                background-color: white;
+                border: 1px solid $quaterary-color;
+            }
+
+        }
+
+        #info {
+            font-family: 'IBM Plex Sans Thai';
+            font-size: 18px;
+
+            h1 {
+                font-size: 1.5em;
+                padding: 24px 0;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 16px 0px;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    label {
+                        width: 80px;
+                    }
+
+                    input[type=text] {
+                        width: 300px;
+                        font-family: 'IBM Plex Sans Thai';
+                        font-size: 18px;
+                        padding: 0 8px;
+                    }
+
+                    input[type=button] {
+                        width: 160px;
+                        font-family: 'IBM Plex Sans Thai';
+                        font-size: 18px;
+                        background-color: $primary-color;
+                        color: $quaterary-color;
+                    }
+                }
+            }
+
+            &.hidden{
+                display: none;
+            }
+        }
+    }
+
+    #key-layout {
+        @include flex-row-center();
+        gap: $gap-base*10;
+        width: 100%;
+        box-sizing: border-box;
+        padding: $gap-base*2 0;
+
+        %key {
+            padding: $gap-base*1;
+            width: $gap-base*4;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid $primary-color;
+            border-radius: 8px;
+            box-shadow: $secondary-color 0px 4px 0px, transparentize($secondary-color, 0.7) -2px 2px 0px inset;
+
+            &.active {
+                animation-name: keyPress;
+                animation-duration: 0.2s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: 1;
+            }
+
+            h3 {
+                font-size: 2em;
+                font-weight: 700;
+            }
+        }
+
+        #keyL,
+        #keyA {
+            @extend %key;
+        }
+    }
+}
+
+@keyframes circle-push {
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-200px);
+    }
+}

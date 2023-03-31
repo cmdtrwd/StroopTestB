@@ -1,0 +1,239 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai:100,200,300,regular,500,600,700);
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Poppins";
+}
+
+@keyframes keyPress {
+  to {
+    background-color: #A27B5C;
+  }
+}
+header {
+  width: 100%;
+  height: 100vh;
+}
+header #top-nav {
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #2C3639;
+  color: #DCD7C9;
+}
+header #content-container {
+  height: calc(100vh - 64px - 130px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+header #content-container .box {
+  width: 100%;
+  height: 100%;
+  background-color: #DCD7C9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  box-sizing: border-box;
+  border: 1px solid white;
+  transition: 0.3s all ease-in-out;
+}
+header #content-container .box h1 {
+  font-weight: bold;
+  font-size: 3em;
+  color: #2C3639;
+}
+header #content-container .box #instruction {
+  max-width: 1200px;
+  padding: 0 80px;
+  line-height: 150%;
+  text-align: center;
+  font-size: 2em;
+  display: none;
+}
+header #content-container .box #instruction.active {
+  display: block;
+}
+header #content-container .box #currentImage {
+  display: none;
+}
+header #content-container .box #currentImage.active {
+  display: block;
+}
+header #content-container .box #currentImage img {
+  width: auto;
+  height: 300px;
+}
+header #content-container .box #circle {
+  display: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #A27B5C;
+}
+header #content-container .box #circle.active {
+  animation-name: circle-push;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+header #content-container .box #word {
+  position: absolute;
+  top: 120px;
+}
+header #content-container .box #push-button {
+  display: none;
+}
+header #content-container .box .button {
+  width: 100px;
+  padding: 16px;
+  border: #2C3639 1px solid;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+header #content-container .box .button:hover {
+  background-color: #2C3639;
+  color: #DCD7C9;
+}
+header #content-container .box.active {
+  background-color: white;
+  border: 1px solid #DCD7C9;
+}
+header #content-container #info {
+  font-family: "IBM Plex Sans Thai";
+  font-size: 18px;
+}
+header #content-container #info h1 {
+  font-size: 1.5em;
+  padding: 24px 0;
+}
+header #content-container #info form {
+  display: flex;
+  flex-direction: column;
+}
+header #content-container #info form .row {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 0px;
+  align-items: center;
+  justify-content: flex-end;
+}
+header #content-container #info form .row label {
+  width: 80px;
+}
+header #content-container #info form .row input[type=text] {
+  width: 300px;
+  font-family: "IBM Plex Sans Thai";
+  font-size: 18px;
+  padding: 0 8px;
+}
+header #content-container #info form .row input[type=button] {
+  width: 160px;
+  font-family: "IBM Plex Sans Thai";
+  font-size: 18px;
+  background-color: #2C3639;
+  color: #DCD7C9;
+}
+header #content-container #info.hidden {
+  display: none;
+}
+header #key-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 160px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 0;
+}
+header #key-layout #keyL,
+header #key-layout #keyA {
+  padding: 16px;
+  width: 64px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #2C3639;
+  border-radius: 8px;
+  box-shadow: #3F4E4F 0px 4px 0px, rgba(63, 78, 79, 0.3) -2px 2px 0px inset;
+}
+header #key-layout .active#keyL,
+header #key-layout .active#keyA {
+  animation-name: keyPress;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+header #key-layout #keyL h3,
+header #key-layout #keyA h3 {
+  font-size: 2em;
+  font-weight: 700;
+}
+@keyframes circle-push {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}/*# sourceMappingURL=main.css.map */
